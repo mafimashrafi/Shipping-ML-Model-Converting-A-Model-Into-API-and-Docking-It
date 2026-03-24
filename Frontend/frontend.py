@@ -41,14 +41,14 @@ if st.button("Predict Premium Category"):
             result = response.json()
             
             if response.status_code == 200:
-                st.success(f"✅ Prediction: **{result.get('message', 'N/A')}**")
+                st.success(f"Prediction: **{result.get('message', 'N/A')}**")
             else:
                 st.error(f"API Error: {response.status_code}")
                 st.write(result)
         else:
-            st.error("❌ Empty response from API")
+            st.error("Empty response from API")
 
     except requests.exceptions.ConnectionError:
-        st.error("❌ Could not connect to the FastAPI server. Make sure it's running on http://127.0.0.1:8000")
+        st.error("Could not connect to the FastAPI server. Make sure it's running on http://127.0.0.1:8000")
     except requests.exceptions.JSONDecodeError as e:
-        st.error(f"❌ Invalid JSON response: {str(e)}")
+        st.error(f"Invalid JSON response: {str(e)}")
