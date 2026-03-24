@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 from schema.user_input import UserInput
+from schema.prediction_response import PredictionResponse
 from model.predict import predict_output, model
 import traceback
     
@@ -20,7 +21,7 @@ def health_check():
         "model_loaded": model is not None
     }
         
-@app.post('/predict')
+@app.post('/predict', response_model = PredictionResponse)
 def predict_premium(data: UserInput):
     try:
         # Debug: Log the input data
@@ -37,7 +38,7 @@ def predict_premium(data: UserInput):
         
         prediction = predict_output(user_input)
         
-        return JSONResponse(status_code=200, content={'message': f"Predicted category is {prediction}"})
+        return JSONResponse(status_code=200, content={'message': f"Response: {prediction}"})
     
     except Exception as e:
         error_msg = f"Prediction error: {str(e)}\n{traceback.format_exc()}"
