@@ -1,3 +1,8 @@
 Model/
 Notebooks/
 MLenv/
+Data/
+
+**/__pycache__/
+**/*.pyc
+**/*.pyo
