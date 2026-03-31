@@ -1,5 +1,4 @@
 MLenv
-Backend/__pycache__/
-Backend/schema/__pycache__
-Backend/config/__pycache__
-Backend/Model/__pycache__
+**/__pycache__/
+**/*.pyc
+**/*.pyo
